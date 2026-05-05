@@ -191,12 +191,15 @@ func _on_spawn_timer() -> void:
 func _spawn_customer() -> void:
 	var ctype = _pick_customer_type()
 	var customer = CUSTOMER_SCENE.instantiate()
-	customer_area.add_child(customer)
 
 	var queue_slot = customers_active.size()
 	var queue_pos = QUEUE_POSITIONS[min(queue_slot, QUEUE_POSITIONS.size() - 1)]
+	# Set position BEFORE add_child so _ready() sees correct values
 	customer.queue_position = queue_pos
 	customer.position = Vector2(1200, queue_pos.y)
+
+	customer_area.add_child(customer)
+	# setup() called AFTER add_child() so @onready vars are valid
 	customer.setup(ctype, available_flavors, level_data)
 
 	customer.served.connect(func(tip): _on_customer_served(customer, tip))

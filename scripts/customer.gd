@@ -81,6 +81,12 @@ func setup(ctype: int, available_flavors: Array, level_data: Dictionary = {}) ->
 		body.color = data["body_color"]
 	if is_vip and order_bubble:
 		order_bubble.add_theme_stylebox_override("panel", _make_gold_style())
+	# Update patience timer with correct value
+	_patience_timer = patience_seconds
+	# UI is ready because setup() is called after add_child() → _ready()
+	_update_visuals()
+	_build_order_display()
+	_walk_to_queue()
 
 func _generate_order(ctype: int, available_flavors: Array) -> Order:
 	var data = CUSTOMER_DATA[ctype]
@@ -133,11 +139,9 @@ func _generate_order(ctype: int, available_flavors: Array) -> Order:
 	return Order.new(items)
 
 func _ready() -> void:
+	# Minimal init — real setup happens in setup() which is called after add_child()
 	patience = 1.0
 	_patience_timer = patience_seconds
-	_update_visuals()
-	_build_order_display()
-	_walk_to_queue()
 
 func _process(delta: float) -> void:
 	if state == CustomerState.WAITING:
@@ -175,7 +179,7 @@ func _leave_happy() -> void:
 	var tween = create_tween()
 	var exit_pos = Vector2(get_viewport().get_visible_rect().size.x + 100, position.y)
 	tween.tween_property(self, "position", exit_pos, 0.8)
-	tween.tween_callback(func(): emit_signal("served", tip_amount); queue_free())
+	tween.tween_callback(_emit_served_and_free)
 
 func _leave_angry() -> void:
 	if state == CustomerState.LEAVING_ANGRY or state == CustomerState.LEAVING_HAPPY:
@@ -186,10 +190,18 @@ func _leave_angry() -> void:
 	var tween = create_tween()
 	var exit_pos = Vector2(get_viewport().get_visible_rect().size.x + 100, position.y)
 	tween.tween_property(self, "position", exit_pos, 0.8)
-	tween.tween_callback(func(): emit_signal("left_angry"); queue_free())
+	tween.tween_callback(_emit_angry_and_free)
 
 func force_leave_angry() -> void:
 	_leave_angry()
+
+func _emit_served_and_free() -> void:
+	emit_signal("served", tip_amount)
+	queue_free()
+
+func _emit_angry_and_free() -> void:
+	emit_signal("left_angry")
+	queue_free()
 
 func _update_visuals() -> void:
 	if not is_inside_tree():
