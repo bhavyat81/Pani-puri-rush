@@ -150,8 +150,8 @@ func _build_jug_buttons() -> void:
 			continue
 		var btn = Button.new()
 		btn.custom_minimum_size = Vector2(160, 160)
-		btn.text = flavor_name.substr(0, 1) + "\n" + flavor_name.substr(0, 4)
-		btn.theme_override_font_sizes["font_size"] = 28
+		btn.text = flavor_name.left(1) + "\n" + flavor_name.left(4)
+		btn.add_theme_font_size_override("font_size", 28)
 
 		var flavor_color = _get_flavor_color(flavor_idx)
 		var style = StyleBoxFlat.new()

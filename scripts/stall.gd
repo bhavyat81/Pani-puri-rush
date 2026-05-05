@@ -39,7 +39,7 @@ func _build_jug_buttons() -> void:
 			continue
 		var btn = Button.new()
 		btn.custom_minimum_size = Vector2(100, 120)
-		btn.text = flavor_name.substr(0, 1)
+		btn.text = flavor_name.left(1)
 		var flavor_color = FlavorHelper.get_color(flavor_idx)
 		var style = StyleBoxFlat.new()
 		style.bg_color = flavor_color

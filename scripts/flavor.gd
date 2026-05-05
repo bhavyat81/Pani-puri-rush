@@ -43,12 +43,18 @@ const FLAVOR_DATA: Dictionary = {
 }
 
 static func get_color(flavor: int) -> Color:
+	if flavor not in FLAVOR_DATA:
+		return Color.WHITE
 	return FLAVOR_DATA[flavor]["color"]
 
 static func get_display_name(flavor: int) -> String:
+	if flavor not in FLAVOR_DATA:
+		return "Unknown"
 	return FLAVOR_DATA[flavor]["display_name"]
 
 static func get_jug_sprite(flavor: int) -> String:
+	if flavor not in FLAVOR_DATA:
+		return ""
 	return FLAVOR_DATA[flavor]["jug_sprite"]
 
 static func from_string(s: String) -> int:

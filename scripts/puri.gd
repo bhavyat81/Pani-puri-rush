@@ -38,10 +38,9 @@ func apply_flavor(f: int) -> bool:
 	if state != PuriState.MASALA_FILLED:
 		return false
 	flavor = f
-	state = PuriState.FLAVORED
-	_update_visuals()
-	emit_signal("state_changed", state)
+	# Go directly to READY; FLAVORED is a transient internal step, no separate signal needed.
 	state = PuriState.READY
+	_update_visuals()
 	emit_signal("state_changed", state)
 	AudioManager.play_tap()
 	return true

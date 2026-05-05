@@ -9,6 +9,8 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     container:
       image: barichello/godot-ci:4.3
     steps:
