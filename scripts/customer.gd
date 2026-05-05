@@ -100,12 +100,16 @@ func _generate_order(ctype: int, available_flavors: Array) -> Order:
 			kid_flavor = FlavorHelper.from_string(available_flavors[0])
 		items.append({"flavor": kid_flavor, "quantity": num_puris, "served": 0})
 	elif ctype == CustomerType.FOODIE and available_flavors.size() >= 3:
-		# Foodies want at least 3 different flavors
+		# Foodies want at least 3 different flavors.
+		# Distribute num_puris across 3 randomly chosen flavors, ensuring
+		# each flavor gets ≥1 puri and the last flavor absorbs any remainder.
 		var shuffled = available_flavors.duplicate()
 		shuffled.shuffle()
 		var num_flavors = min(3, shuffled.size())
 		var remaining = num_puris
 		for i in range(num_flavors):
+			# Each flavor gets at least 1 puri; reserve 1 per remaining flavor
+			# so we never leave a later slot with 0.
 			var qty = 1
 			if i == num_flavors - 1:
 				qty = remaining

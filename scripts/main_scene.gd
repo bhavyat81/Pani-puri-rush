@@ -5,6 +5,14 @@ const CUSTOMER_SCENE: PackedScene = preload("res://scenes/Customer.tscn")
 const LEVEL_COMPLETE_SCENE: PackedScene = preload("res://scenes/LevelComplete.tscn")
 const GAME_OVER_SCENE: PackedScene = preload("res://scenes/GameOver.tscn")
 
+# Assembly state enum — tracks the in-hand puri being prepared
+enum AssemblyState {
+	NONE,        # No puri in hand
+	EMPTY,       # Puri picked up, not yet filled
+	WITH_MASALA, # Masala added, waiting for flavor
+	READY,       # Flavored and ready to plate
+}
+
 const MAX_QUEUE_SIZE: int = 3
 const QUEUE_POSITIONS: Array = [
 	Vector2(810, 0),
@@ -22,7 +30,7 @@ var is_paused: bool = false
 var level_running: bool = false
 
 # Puri assembly state
-var puri_state: int = 0  # 0=none, 1=empty, 2=masala, 3=ready
+var puri_state: int = AssemblyState.NONE
 var puri_flavor: int = -1
 var plate_puris: Array = []  # list of {flavor: int} ready to serve
 
@@ -110,7 +118,7 @@ func _start_level() -> void:
 	available_flavors = level_data.get("available_flavors", ["TEEKHA", "MEETHA"])
 	customers_spawned = 0
 	customers_active.clear()
-	puri_state = 0
+	puri_state = AssemblyState.NONE
 	puri_flavor = -1
 	plate_puris.clear()
 	level_running = true
@@ -282,45 +290,45 @@ func _on_level_complete(stars: int, final_score: int, final_coins: int) -> void:
 func _on_puri_tray_pressed() -> void:
 	if not level_running:
 		return
-	if puri_state == 0:
-		puri_state = 1
+	if puri_state == AssemblyState.NONE:
+		puri_state = AssemblyState.EMPTY
 		AudioManager.play_tap()
 		_update_puri_display()
-	elif puri_state == 3:
+	elif puri_state == AssemblyState.READY:
 		# Move ready puri to plate
 		_add_to_plate(puri_flavor)
-		puri_state = 0
+		puri_state = AssemblyState.NONE
 		puri_flavor = -1
 		_update_puri_display()
 
 func _on_masala_pressed() -> void:
 	if not level_running:
 		return
-	if puri_state == 1:
-		puri_state = 2
+	if puri_state == AssemblyState.EMPTY:
+		puri_state = AssemblyState.WITH_MASALA
 		AudioManager.play_tap()
 		_update_puri_display()
 
 func _on_flavor_pressed(flavor: int) -> void:
 	if not level_running:
 		return
-	if puri_state == 2:
-		puri_state = 3
+	if puri_state == AssemblyState.WITH_MASALA:
+		puri_state = AssemblyState.READY
 		puri_flavor = flavor
 		AudioManager.play_tap()
 		GameManager.add_puri_score()
 		_update_puri_display()
-	elif puri_state == 3:
+	elif puri_state == AssemblyState.READY:
 		# Tapping a different flavor discards the in-progress puri
 		AudioManager.play_serve_wrong()
-		puri_state = 0
+		puri_state = AssemblyState.NONE
 		puri_flavor = -1
 		_update_puri_display()
 
 func _on_trash_pressed() -> void:
-	if puri_state > 0:
+	if puri_state != AssemblyState.NONE:
 		AudioManager.play_serve_wrong()
-		puri_state = 0
+		puri_state = AssemblyState.NONE
 		puri_flavor = -1
 		_update_puri_display()
 
@@ -355,16 +363,16 @@ func _update_puri_display() -> void:
 		if child.name.begins_with("AssemblyPuri"):
 			child.queue_free()
 
-	if puri_state > 0:
+	if puri_state != AssemblyState.NONE:
 		var puri_rect = ColorRect.new()
 		puri_rect.name = "AssemblyPuri"
 		puri_rect.custom_minimum_size = Vector2(60, 60)
 		match puri_state:
-			1:
+			AssemblyState.EMPTY:
 				puri_rect.color = Color("#f4a261")
-			2:
+			AssemblyState.WITH_MASALA:
 				puri_rect.color = Color("#c57020")
-			3:
+			AssemblyState.READY:
 				puri_rect.color = _get_flavor_color(puri_flavor)
 		puri_container.add_child(puri_rect)
 
