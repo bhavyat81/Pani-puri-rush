@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="60%" stop-color="#c0392b"/>
+      <stop offset="100%" stop-color="#2c1654"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <!-- Stall silhouettes -->
+  <rect x="50" y="1400" width="300" height="400" fill="#1a0a2e" opacity="0.7"/>
+  <rect x="400" y="1350" width="280" height="450" fill="#1a0a2e" opacity="0.7"/>
+  <rect x="730" y="1420" width="300" height="380" fill="#1a0a2e" opacity="0.7"/>
+  <!-- Fairy lights -->
+  <circle cx="100" cy="1380" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="200" cy="1360" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="300" cy="1375" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="400" cy="1355" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="500" cy="1370" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="600" cy="1360" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="700" cy="1380" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="800" cy="1355" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="900" cy="1370" r="6" fill="#ffcc02" opacity="0.9"/>
+  <circle cx="1000" cy="1360" r="6" fill="#ffcc02" opacity="0.9"/>
+</svg>
