@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pani Puri Rush 🍵</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+
+    <!-- Header -->
+    <div id="header">
+      <div class="header-cell">
+        <span class="label">SCORE</span>
+        <span id="score">0</span>
+      </div>
+      <div class="header-cell title-cell">
+        🍵 Pani Puri Rush
+      </div>
+      <div class="header-cell">
+        <span class="label">LIVES</span>
+        <span id="lives">❤️❤️❤️</span>
+      </div>
+    </div>
+
+    <!-- Level banner -->
+    <div id="level-banner">Level <span id="level-num">1</span></div>
+
+    <!-- Stall / Flavor selection -->
+    <div id="stall">
+      <div id="stall-sign">🏪 Pick a flavor, then tap a customer!</div>
+      <div id="flavors">
+        <button class="flavor-btn spicy"  data-flavor="spicy">🌶️<br/>Spicy</button>
+        <button class="flavor-btn sweet"  data-flavor="sweet">🍯<br/>Sweet</button>
+        <button class="flavor-btn tangy"  data-flavor="tangy">🍋<br/>Tangy</button>
+        <button class="flavor-btn mint"   data-flavor="mint">🌿<br/>Mint</button>
+      </div>
+      <div id="selected-display">No flavor selected</div>
+    </div>
+
+    <!-- Customer area -->
+    <div id="customer-area"></div>
+
+    <!-- Start screen overlay -->
+    <div id="start-screen" class="overlay">
+      <div class="overlay-box">
+        <div class="overlay-emoji">🍵</div>
+        <h1>Pani Puri Rush!</h1>
+        <p>Customers are hungry!<br/>Pick the right flavor and serve them before they leave.</p>
+        <ul class="instructions">
+          <li>🌶️ Spicy &nbsp;·&nbsp; 🍯 Sweet &nbsp;·&nbsp; 🍋 Tangy &nbsp;·&nbsp; 🌿 Mint</li>
+          <li>✅ Correct order → <strong>+points</strong></li>
+          <li>❌ Wrong order or timeout → <strong>-1 life</strong></li>
+          <li>Level up every <strong>5 correct orders</strong></li>
+        </ul>
+        <button id="start-btn">Start Game</button>
+      </div>
+    </div>
+
+    <!-- Game Over overlay -->
+    <div id="game-over-screen" class="overlay hidden">
+      <div class="overlay-box">
+        <div class="overlay-emoji">😢</div>
+        <h1>Game Over!</h1>
+        <p>Final Score: <strong><span id="final-score">0</span></strong></p>
+        <p>Level reached: <strong><span id="final-level">1</span></strong></p>
+        <button id="restart-btn">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
