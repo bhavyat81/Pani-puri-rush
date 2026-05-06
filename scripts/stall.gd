@@ -1,4 +1,5 @@
 # stall.gd — Handles tap interactions on jugs, masala bowl, puri tray, and serving plate
+class_name Stall
 extends Node2D
 
 signal puri_tray_tapped()

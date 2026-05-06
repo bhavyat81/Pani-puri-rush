@@ -1,4 +1,5 @@
 # game_manager.gd — Autoload singleton: score, coins, day, customers served
+class_name GameManager
 extends Node
 
 signal score_changed(new_score: int)

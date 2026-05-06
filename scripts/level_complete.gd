@@ -1,4 +1,5 @@
 # level_complete.gd — Level complete overlay
+class_name LevelComplete
 extends CanvasLayer
 
 @onready var stars_label: Label = $Panel/VBoxContainer/StarsLabel

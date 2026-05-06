@@ -1,4 +1,5 @@
 # main_menu.gd — Main menu screen
+class_name MainMenu
 extends Node2D
 
 @onready var play_button: Button = $VBoxContainer/PlayButton

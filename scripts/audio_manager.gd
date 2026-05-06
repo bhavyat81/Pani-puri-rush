@@ -1,4 +1,5 @@
 # audio_manager.gd — Autoload audio manager. Plays SFX; no-ops if files missing.
+class_name AudioManager
 extends Node
 
 var _players: Dictionary = {}

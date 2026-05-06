@@ -1,4 +1,5 @@
 # hud.gd — HUD: score, coins, day timer, reputation hearts, combo badge
+class_name HUD
 extends CanvasLayer
 
 @onready var coins_label: Label = $TopBar/HBoxContainer/CoinsLabel

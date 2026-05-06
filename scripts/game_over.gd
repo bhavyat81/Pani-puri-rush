@@ -1,4 +1,5 @@
 # game_over.gd — Game over overlay
+class_name GameOver
 extends CanvasLayer
 
 @onready var score_label: Label = $Panel/VBoxContainer/ScoreLabel
