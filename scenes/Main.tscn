@@ -1,19 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://main001"]
+[gd_scene load_steps=11 format=3 uid="uid://main001"]
 
 [ext_resource type="Script" uid="uid://mainscript" path="res://scripts/main_scene.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://customer001" path="res://scenes/Customer.tscn" id="2_customer"]
 [ext_resource type="PackedScene" uid="uid://hud001" path="res://scenes/HUD.tscn" id="3_hud"]
 [ext_resource type="PackedScene" uid="uid://levelcomplete001" path="res://scenes/LevelComplete.tscn" id="4_lc"]
 [ext_resource type="PackedScene" uid="uid://gameover001" path="res://scenes/GameOver.tscn" id="5_go"]
+[ext_resource type="Texture2D" path="res://assets/sprites/background_market.svg" id="6_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/counter.svg" id="7_counter"]
+[ext_resource type="Texture2D" path="res://assets/sprites/puri_empty.svg" id="8_puri_tray"]
+[ext_resource type="Texture2D" path="res://assets/sprites/masala_bowl.svg" id="9_masala"]
+[ext_resource type="Texture2D" path="res://assets/sprites/plate.svg" id="10_plate"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+texture = ExtResource("6_bg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.961, 0.38, 0.204, 1)
+expand_mode = 1
+stretch_mode = 0
 
 [node name="HUD" parent="." instance=ExtResource("3_hud")]
 
@@ -26,12 +33,30 @@ position = Vector2(0, 1400)
 [node name="AssemblyArea" type="Node2D" parent="."]
 position = Vector2(540, 1350)
 
+[node name="PlateBG" type="TextureRect" parent="AssemblyArea"]
+texture = ExtResource("10_plate")
+offset_left = -180.0
+offset_top = -55.0
+offset_right = 180.0
+offset_bottom = 55.0
+expand_mode = 1
+stretch_mode = 0
+
 [node name="PuriContainer" type="HBoxContainer" parent="AssemblyArea"]
 offset_left = -150.0
 offset_top = -40.0
 offset_right = 150.0
 offset_bottom = 40.0
 alignment = 1
+
+[node name="CounterBG" type="TextureRect" parent="StallArea"]
+texture = ExtResource("7_counter")
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1080.0
+offset_bottom = 220.0
+expand_mode = 1
+stretch_mode = 0
 
 [node name="Counter" type="PanelContainer" parent="StallArea"]
 offset_left = 0.0
@@ -45,7 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="JugRow" type="HBoxContainer" parent="StallArea/Counter/VBoxContainer"]
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 220)
 alignment = 1
 size_flags_horizontal = 3
 
@@ -55,18 +80,22 @@ alignment = 1
 size_flags_horizontal = 3
 
 [node name="PuriTrayBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
-custom_minimum_size = Vector2(200, 160)
+custom_minimum_size = Vector2(220, 160)
 text = "Puri Tray"
+icon = ExtResource("8_puri_tray")
+expand_icon = true
 theme_override_font_sizes/font_size = 28
 
 [node name="MasalaBowlBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
-custom_minimum_size = Vector2(200, 160)
+custom_minimum_size = Vector2(220, 160)
 text = "Masala"
+icon = ExtResource("9_masala")
+expand_icon = true
 theme_override_font_sizes/font_size = 28
 
 [node name="TrashBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
-custom_minimum_size = Vector2(200, 160)
-text = "Discard"
+custom_minimum_size = Vector2(160, 160)
+text = "✕ Discard"
 theme_override_font_sizes/font_size = 28
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]

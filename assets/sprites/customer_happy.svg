@@ -1,7 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 96">
-  <ellipse cx="32" cy="70" rx="18" ry="24" fill="#4a9eff"/>
-  <circle cx="32" cy="28" r="22" fill="#ffd93d"/>
-  <circle cx="24" cy="24" r="3" fill="#333"/>
-  <circle cx="40" cy="24" r="3" fill="#333"/>
-  <path d="M 22 36 Q 32 44 42 36" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="500" viewBox="0 0 300 500">
+  <!-- Legs -->
+  <rect x="100" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <rect x="158" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <!-- Shoes -->
+  <ellipse cx="121" cy="478" rx="26" ry="12" fill="#222"/>
+  <ellipse cx="179" cy="478" rx="26" ry="12" fill="#222"/>
+  <!-- Body / shirt -->
+  <rect x="78" y="195" width="144" height="175" rx="28" fill="#4a9eff"/>
+  <!-- Shirt collar -->
+  <polygon points="150,195 132,230 168,230" fill="#3a8aee"/>
+  <!-- Left arm — raised slightly -->
+  <rect x="22" y="195" width="60" height="30" rx="15" fill="#4a9eff" transform="rotate(-15 52 210)"/>
+  <!-- Right arm — raised slightly -->
+  <rect x="218" y="195" width="60" height="30" rx="15" fill="#4a9eff" transform="rotate(15 248 210)"/>
+  <!-- Hands -->
+  <circle cx="26" cy="218" r="20" fill="#ffd93d"/>
+  <circle cx="274" cy="218" r="20" fill="#ffd93d"/>
+  <!-- Neck -->
+  <rect x="134" y="165" width="32" height="38" rx="10" fill="#ffd93d"/>
+  <!-- Head -->
+  <circle cx="150" cy="120" r="84" fill="#ffd93d"/>
+  <!-- Rosy cheeks -->
+  <ellipse cx="98" cy="138" rx="18" ry="12" fill="#ff8fa3" opacity="0.55"/>
+  <ellipse cx="202" cy="138" rx="18" ry="12" fill="#ff8fa3" opacity="0.55"/>
+  <!-- Ears -->
+  <ellipse cx="66" cy="120" rx="14" ry="18" fill="#ffc820"/>
+  <ellipse cx="234" cy="120" rx="14" ry="18" fill="#ffc820"/>
+  <!-- Eyes — squinted/happy -->
+  <path d="M108 107 Q118 98 128 107" stroke="#333" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M172 107 Q182 98 192 107" stroke="#333" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Big smile -->
+  <path d="M112 145 Q150 185 188 145" stroke="#6b4226" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Teeth -->
+  <path d="M116 148 Q150 176 184 148" fill="white" opacity="0.7"/>
 </svg>

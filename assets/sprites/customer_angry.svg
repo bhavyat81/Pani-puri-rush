@@ -1,9 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 96">
-  <ellipse cx="32" cy="70" rx="18" ry="24" fill="#4a9eff"/>
-  <circle cx="32" cy="28" r="22" fill="#ff6b6b"/>
-  <circle cx="24" cy="24" r="3" fill="#333"/>
-  <circle cx="40" cy="24" r="3" fill="#333"/>
-  <path d="M 22 38 Q 32 32 42 38" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="20" y1="18" x2="28" y2="22" stroke="#333" stroke-width="2" stroke-linecap="round"/>
-  <line x1="44" y1="18" x2="36" y2="22" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="500" viewBox="0 0 300 500">
+  <!-- Legs -->
+  <rect x="100" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <rect x="158" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <!-- Shoes -->
+  <ellipse cx="121" cy="478" rx="26" ry="12" fill="#222"/>
+  <ellipse cx="179" cy="478" rx="26" ry="12" fill="#222"/>
+  <!-- Body / shirt -->
+  <rect x="78" y="195" width="144" height="175" rx="28" fill="#4a9eff"/>
+  <!-- Shirt collar -->
+  <polygon points="150,195 132,230 168,230" fill="#3a8aee"/>
+  <!-- Arms — hands on hips -->
+  <rect x="28" y="215" width="56" height="28" rx="14" fill="#4a9eff" transform="rotate(20 56 229)"/>
+  <rect x="216" y="215" width="56" height="28" rx="14" fill="#4a9eff" transform="rotate(-20 244 229)"/>
+  <!-- Hands -->
+  <circle cx="34" cy="246" r="20" fill="#e8b820"/>
+  <circle cx="266" cy="246" r="20" fill="#e8b820"/>
+  <!-- Neck -->
+  <rect x="134" y="165" width="32" height="38" rx="10" fill="#e8803a"/>
+  <!-- Head (reddish-orange tint for anger) -->
+  <circle cx="150" cy="120" r="84" fill="#e8803a"/>
+  <!-- Anger veins -->
+  <path d="M80 75 Q90 65 100 75" stroke="#c0392b" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M195 75 Q205 65 215 82" stroke="#c0392b" stroke-width="3" fill="none" opacity="0.6"/>
+  <!-- Ears -->
+  <ellipse cx="66" cy="120" rx="14" ry="18" fill="#d47030"/>
+  <ellipse cx="234" cy="120" rx="14" ry="18" fill="#d47030"/>
+  <!-- Furrowed brows -->
+  <line x1="100" y1="90" x2="135" y2="100" stroke="#6b3010" stroke-width="7" stroke-linecap="round"/>
+  <line x1="200" y1="90" x2="165" y2="100" stroke="#6b3010" stroke-width="7" stroke-linecap="round"/>
+  <!-- Eyes — angry narrow -->
+  <ellipse cx="118" cy="112" rx="14" ry="8" fill="white"/>
+  <ellipse cx="182" cy="112" rx="14" ry="8" fill="white"/>
+  <circle cx="118" cy="113" r="6" fill="#333"/>
+  <circle cx="182" cy="113" r="6" fill="#333"/>
+  <!-- Frown -->
+  <path d="M116 155 Q150 135 184 155" stroke="#6b2010" stroke-width="6" fill="none" stroke-linecap="round"/>
 </svg>

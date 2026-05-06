@@ -1,7 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 96">
-  <ellipse cx="32" cy="70" rx="18" ry="24" fill="#4a9eff"/>
-  <circle cx="32" cy="28" r="22" fill="#ffd93d"/>
-  <circle cx="24" cy="24" r="3" fill="#333"/>
-  <circle cx="40" cy="24" r="3" fill="#333"/>
-  <line x1="23" y1="38" x2="41" y2="38" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="500" viewBox="0 0 300 500">
+  <!-- Legs -->
+  <rect x="100" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <rect x="158" y="360" width="42" height="120" rx="16" fill="#3d3d6b"/>
+  <!-- Shoes -->
+  <ellipse cx="121" cy="478" rx="26" ry="12" fill="#222"/>
+  <ellipse cx="179" cy="478" rx="26" ry="12" fill="#222"/>
+  <!-- Body / shirt -->
+  <rect x="78" y="195" width="144" height="175" rx="28" fill="#4a9eff"/>
+  <!-- Shirt collar -->
+  <polygon points="150,195 132,230 168,230" fill="#3a8aee"/>
+  <!-- Left arm -->
+  <rect x="28" y="205" width="56" height="30" rx="15" fill="#4a9eff"/>
+  <!-- Right arm -->
+  <rect x="216" y="205" width="56" height="30" rx="15" fill="#4a9eff"/>
+  <!-- Hands -->
+  <circle cx="32" cy="232" r="20" fill="#ffd93d"/>
+  <circle cx="268" cy="232" r="20" fill="#ffd93d"/>
+  <!-- Neck -->
+  <rect x="134" y="165" width="32" height="38" rx="10" fill="#ffd93d"/>
+  <!-- Head -->
+  <circle cx="150" cy="120" r="84" fill="#ffd93d"/>
+  <!-- Ears -->
+  <ellipse cx="66" cy="120" rx="14" ry="18" fill="#ffc820"/>
+  <ellipse cx="234" cy="120" rx="14" ry="18" fill="#ffc820"/>
+  <!-- Eyes -->
+  <circle cx="118" cy="108" r="14" fill="white"/>
+  <circle cx="182" cy="108" r="14" fill="white"/>
+  <circle cx="122" cy="111" r="8" fill="#333"/>
+  <circle cx="186" cy="111" r="8" fill="#333"/>
+  <!-- Eye shine -->
+  <circle cx="126" cy="107" r="3" fill="white"/>
+  <circle cx="190" cy="107" r="3" fill="white"/>
+  <!-- Neutral mouth -->
+  <line x1="122" y1="152" x2="178" y2="152" stroke="#6b4226" stroke-width="5" stroke-linecap="round"/>
 </svg>

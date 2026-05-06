@@ -1,38 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://customer001"]
+[gd_scene load_steps=5 format=3 uid="uid://customer001"]
 
 [ext_resource type="Script" uid="uid://customerscript" path="res://scripts/customer.gd" id="1_customer"]
+[ext_resource type="Texture2D" path="res://assets/sprites/customer_neutral.svg" id="2_neutral"]
+[ext_resource type="Texture2D" path="res://assets/sprites/customer_happy.svg" id="3_happy"]
+[ext_resource type="Texture2D" path="res://assets/sprites/customer_angry.svg" id="4_angry"]
 
 [node name="Customer" type="Node2D"]
 script = ExtResource("1_customer")
 
-[node name="Body" type="ColorRect" parent="."]
-offset_left = -25.0
-offset_top = 30.0
-offset_right = 25.0
-offset_bottom = 100.0
-color = Color(0.29, 0.62, 1, 1)
-
-[node name="Head" type="ColorRect" parent="."]
-offset_left = -22.0
-offset_top = -22.0
-offset_right = 22.0
-offset_bottom = 22.0
-color = Color(1, 0.85, 0.24, 1)
+[node name="BodySprite" type="Sprite2D" parent="."]
+position = Vector2(0, 30)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_neutral")
 
 [node name="PatienceBar" type="ProgressBar" parent="."]
-offset_left = -35.0
-offset_top = -50.0
-offset_right = 35.0
-offset_bottom = -30.0
+offset_left = -65.0
+offset_top = -115.0
+offset_right = 65.0
+offset_bottom = -88.0
 max_value = 100.0
 value = 100.0
 show_percentage = false
 
 [node name="OrderBubble" type="PanelContainer" parent="."]
-offset_left = -60.0
-offset_top = -130.0
-offset_right = 60.0
-offset_bottom = -60.0
+offset_left = -80.0
+offset_top = -190.0
+offset_right = 80.0
+offset_bottom = -125.0
 
 [node name="MarginContainer" type="MarginContainer" parent="OrderBubble"]
 anchors_preset = 15
