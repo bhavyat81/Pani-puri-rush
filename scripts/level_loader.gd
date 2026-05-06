@@ -1,4 +1,5 @@
 # level_loader.gd — Loads level data from data/levels.json
+class_name LevelLoader
 extends Node
 
 var levels_data: Array = []

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://customer001"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" uid="uid://customerscript" path="res://scripts/customer.gd" id="1_customer"]
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_customer"]
 [ext_resource type="Texture2D" path="res://assets/sprites/customer_neutral.svg" id="2_neutral"]
 [ext_resource type="Texture2D" path="res://assets/sprites/customer_happy.svg" id="3_happy"]
 [ext_resource type="Texture2D" path="res://assets/sprites/customer_angry.svg" id="4_angry"]

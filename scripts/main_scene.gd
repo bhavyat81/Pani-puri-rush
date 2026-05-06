@@ -1,4 +1,5 @@
 # main_scene.gd — Main gameplay controller
+class_name MainScene
 extends Node2D
 
 const CUSTOMER_SCENE: PackedScene = preload("res://scenes/Customer.tscn")

@@ -6,6 +6,21 @@ A casual time-management mobile game about serving pani puri to hungry customers
 
 ---
 
+## First-time setup
+
+Godot generates SVG `.import` sidecars on first editor open. Before you can run the game headlessly, open the editor once to trigger the asset import pass:
+
+```bash
+godot --path . -e          # opens editor, imports SVGs — then close it
+godot --path .             # runs the game
+```
+
+If you see errors like `No loader found for resource: res://assets/sprites/*.svg`, you skipped the editor pre-pass — run the `-e` command above first.
+
+> **Note:** The `.godot/imported/*.ctex` cache files do **not** need to be committed. The `.svg.import` sidecar files in `assets/sprites/` (if generated) should be tracked — the `.gitignore` does not exclude them.
+
+---
+
 ## How to Run (Godot Editor)
 
 1. [Download Godot 4.3](https://godotengine.org/download) (standard, not .NET).

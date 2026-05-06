@@ -1,4 +1,5 @@
 # flavor.gd — Flavor enum and helper data
+class_name FlavorHelper
 extends Node
 
 enum Flavor {
