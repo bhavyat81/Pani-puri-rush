@@ -5,6 +5,10 @@ const CUSTOMER_SCENE: PackedScene = preload("res://scenes/Customer.tscn")
 const LEVEL_COMPLETE_SCENE: PackedScene = preload("res://scenes/LevelComplete.tscn")
 const GAME_OVER_SCENE: PackedScene = preload("res://scenes/GameOver.tscn")
 
+const PURI_EMPTY_TEX    = preload("res://assets/sprites/puri_empty.svg")
+const PURI_FILLED_TEX   = preload("res://assets/sprites/puri_filled.svg")
+const PURI_FLAVORED_TEX = preload("res://assets/sprites/puri_flavored.svg")
+
 # Assembly state enum — tracks the in-hand puri being prepared
 enum AssemblyState {
 	NONE,        # No puri in hand
@@ -157,19 +161,32 @@ func _build_jug_buttons() -> void:
 		if flavor_idx < 0:
 			continue
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(160, 160)
-		btn.text = flavor_name.left(1) + "\n" + flavor_name.left(4)
-		btn.add_theme_font_size_override("font_size", 28)
+		btn.custom_minimum_size = Vector2(180, 210)
+
+		# Try to load the jug SVG icon
+		var sprite_path = FlavorHelper.get_jug_sprite(flavor_idx)
+		if ResourceLoader.exists(sprite_path):
+			btn.icon = load(sprite_path)
+			btn.expand_icon = true
+
+		btn.text = FlavorHelper.get_display_name(flavor_idx).left(6)  # Fits the button width
+		btn.add_theme_font_size_override("font_size", 22)
 
 		var flavor_color = _get_flavor_color(flavor_idx)
 		var style = StyleBoxFlat.new()
-		style.bg_color = flavor_color
+		# Use translucent fill so the jug icon is visible through the background
+		style.bg_color = Color(flavor_color.r, flavor_color.g, flavor_color.b, 0.3)
 		style.corner_radius_top_left = 16
 		style.corner_radius_top_right = 16
 		style.corner_radius_bottom_left = 16
 		style.corner_radius_bottom_right = 16
+		style.border_color = flavor_color
+		style.border_width_left = 3
+		style.border_width_right = 3
+		style.border_width_top = 3
+		style.border_width_bottom = 3
 		btn.add_theme_stylebox_override("normal", style)
-		btn.add_theme_color_override("font_color", Color.WHITE if flavor_color.get_luminance() < 0.5 else Color.BLACK)
+		btn.add_theme_color_override("font_color", Color.WHITE)
 
 		var captured_flavor = flavor_idx
 		btn.pressed.connect(func(): _on_flavor_pressed(captured_flavor))
@@ -216,12 +233,12 @@ func _spawn_customer() -> void:
 	customers_active.append(customer)
 	customers_spawned += 1
 
-	# Overlay tappable button on the customer
+	# Overlay tappable button on the customer (sized to match sprite at scale 0.36)
 	var btn = Button.new()
 	btn.flat = true
-	btn.custom_minimum_size = Vector2(80, 120)
+	btn.custom_minimum_size = Vector2(110, 185)
 	customer.add_child(btn)
-	btn.position = Vector2(-40, -60)
+	btn.position = Vector2(-55, -62)
 	btn.pressed.connect(func(): _on_customer_tapped(customer))
 
 func _pick_customer_type() -> int:
@@ -364,17 +381,20 @@ func _update_puri_display() -> void:
 			child.queue_free()
 
 	if puri_state != AssemblyState.NONE:
-		var puri_rect = ColorRect.new()
-		puri_rect.name = "AssemblyPuri"
-		puri_rect.custom_minimum_size = Vector2(60, 60)
+		var puri_tr = TextureRect.new()
+		puri_tr.name = "AssemblyPuri"
+		puri_tr.custom_minimum_size = Vector2(90, 90)
+		puri_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		puri_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		match puri_state:
 			AssemblyState.EMPTY:
-				puri_rect.color = Color("#f4a261")
+				puri_tr.texture = PURI_EMPTY_TEX
 			AssemblyState.WITH_MASALA:
-				puri_rect.color = Color("#c57020")
+				puri_tr.texture = PURI_FILLED_TEX
 			AssemblyState.READY:
-				puri_rect.color = _get_flavor_color(puri_flavor)
-		puri_container.add_child(puri_rect)
+				puri_tr.texture = PURI_FLAVORED_TEX
+				puri_tr.modulate = _get_flavor_color(puri_flavor)
+		puri_container.add_child(puri_tr)
 
 func _update_plate_display() -> void:
 	if not puri_container:
@@ -384,11 +404,14 @@ func _update_plate_display() -> void:
 			child.queue_free()
 
 	for i in range(plate_puris.size()):
-		var puri_rect = ColorRect.new()
-		puri_rect.name = "PlatePuri" + str(i)
-		puri_rect.custom_minimum_size = Vector2(50, 50)
-		puri_rect.color = _get_flavor_color(plate_puris[i]["flavor"])
-		puri_container.add_child(puri_rect)
+		var puri_tr = TextureRect.new()
+		puri_tr.name = "PlatePuri" + str(i)
+		puri_tr.custom_minimum_size = Vector2(75, 75)
+		puri_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		puri_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		puri_tr.texture = PURI_FLAVORED_TEX
+		puri_tr.modulate = _get_flavor_color(plate_puris[i]["flavor"])
+		puri_container.add_child(puri_tr)
 
 # ── Pause ─────────────────────────────────────────────────────────────────
 

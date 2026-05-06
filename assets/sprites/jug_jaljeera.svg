@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64">
-  <rect x="8" y="16" width="32" height="40" rx="6" fill="#d4e157"/>
-  <rect x="10" y="8" width="28" height="12" rx="4" fill="#c8d63e"/>
-  <text x="24" y="42" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">J</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="260" viewBox="0 0 180 260">
+  <!-- Shadow -->
+  <ellipse cx="84" cy="252" rx="58" ry="10" fill="#000" opacity="0.18"/>
+  <!-- Handle -->
+  <path d="M138 80 Q175 80 175 130 Q175 178 138 178" stroke="#ccc" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M138 80 Q168 80 168 130 Q168 175 138 178" stroke="#e8e8e8" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- Jug body (glass) -->
+  <rect x="20" y="55" width="120" height="190" rx="22" fill="#e0eef8" opacity="0.85" stroke="#b0c8e0" stroke-width="3"/>
+  <!-- Liquid fill -->
+  <rect x="24" y="90" width="112" height="148" rx="10" fill="#d4e157"/>
+  <!-- Liquid surface highlight -->
+  <ellipse cx="80" cy="91" rx="52" ry="8" fill="#b0c030" opacity="0.6"/>
+  <!-- Glass highlight (left) -->
+  <rect x="28" y="70" width="14" height="140" rx="7" fill="white" opacity="0.35"/>
+  <!-- Jug neck -->
+  <rect x="44" y="28" width="72" height="32" rx="12" fill="#d0e4f4" stroke="#b0c8e0" stroke-width="2.5"/>
+  <!-- Spout rim -->
+  <ellipse cx="80" cy="28" rx="36" ry="10" fill="#c4d8ec" stroke="#b0c8e0" stroke-width="2.5"/>
+  <!-- Label circle -->
+  <circle cx="80" cy="155" r="34" fill="white" opacity="0.82"/>
+  <!-- Label text -->
+  <text x="80" y="165" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#333" text-anchor="middle">J</text>
 </svg>

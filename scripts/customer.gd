@@ -51,6 +51,10 @@ const CUSTOMER_DATA: Dictionary = {
 	},
 }
 
+const TEXTURE_NEUTRAL = preload("res://assets/sprites/customer_neutral.svg")
+const TEXTURE_HAPPY   = preload("res://assets/sprites/customer_happy.svg")
+const TEXTURE_ANGRY   = preload("res://assets/sprites/customer_angry.svg")
+
 var customer_type: int = CustomerType.NORMAL
 var order: Order = null
 var patience: float = 1.0  # 0.0 to 1.0
@@ -61,8 +65,7 @@ var queue_position: Vector2 = Vector2.ZERO
 var is_vip: bool = false
 var _patience_timer: float = 0.0
 
-@onready var body: ColorRect = $Body
-@onready var head: ColorRect = $Head
+@onready var body_sprite: Sprite2D = $BodySprite
 @onready var patience_bar: ProgressBar = $PatienceBar
 @onready var order_bubble: PanelContainer = $OrderBubble
 @onready var order_container: HBoxContainer = $OrderBubble/MarginContainer/HBoxContainer
@@ -77,8 +80,6 @@ func setup(ctype: int, available_flavors: Array, level_data: Dictionary = {}) ->
 	# Generate order based on type and available flavors
 	order = _generate_order(ctype, available_flavors)
 
-	if body:
-		body.color = data["body_color"]
 	if is_vip and order_bubble:
 		order_bubble.add_theme_stylebox_override("panel", _make_gold_style())
 	# Update patience timer with correct value
@@ -213,16 +214,14 @@ func _update_visuals() -> void:
 	_update_mood()
 
 func _update_mood() -> void:
-	if not head:
+	if not body_sprite:
 		return
 	if state == CustomerState.LEAVING_HAPPY:
-		head.color = Color("#00ff00")
-	elif state == CustomerState.LEAVING_ANGRY or patience <= 0.2:
-		head.color = Color("#ff4444")
-	elif patience <= 0.5:
-		head.color = Color("#ffaa00")
+		body_sprite.texture = TEXTURE_HAPPY
+	elif state == CustomerState.LEAVING_ANGRY or patience <= 0.35:
+		body_sprite.texture = TEXTURE_ANGRY
 	else:
-		head.color = Color("#ffd93d")
+		body_sprite.texture = TEXTURE_NEUTRAL
 
 func _update_patience_bar() -> void:
 	if not patience_bar:

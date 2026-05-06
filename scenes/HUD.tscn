@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hud001"]
+[gd_scene load_steps=3 format=3 uid="uid://hud001"]
 
 [ext_resource type="Script" uid="uid://hudscript" path="res://scripts/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/sprites/icon_pause.svg" id="2_pause"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -69,5 +70,6 @@ offset_left = -110.0
 offset_top = 130.0
 offset_right = -10.0
 offset_bottom = 180.0
-text = "Pause"
+icon = ExtResource("2_pause")
+expand_icon = true
 theme_override_font_sizes/font_size = 26

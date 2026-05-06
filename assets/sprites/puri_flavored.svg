@@ -1,17 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <!-- Shadow -->
   <ellipse cx="100" cy="182" rx="72" ry="14" fill="#000" opacity="0.18"/>
-  <!-- Outer puri shell (dark rim) -->
+  <!-- Outer puri shell -->
   <circle cx="100" cy="96" r="84" fill="#b86308"/>
   <!-- Main puri body -->
   <circle cx="100" cy="96" r="78" fill="#d4830a"/>
   <!-- Highlight top-left -->
   <ellipse cx="76" cy="70" rx="40" ry="28" fill="#e8a020" opacity="0.55"/>
-  <!-- Dark hole at top -->
-  <ellipse cx="100" cy="82" rx="24" ry="20" fill="#2a0d00"/>
-  <!-- Hole inner rim -->
-  <ellipse cx="100" cy="82" rx="20" ry="16" fill="#3d1500"/>
+  <!-- Masala in hole -->
+  <ellipse cx="100" cy="82" rx="24" ry="20" fill="#4a1c00"/>
+  <ellipse cx="100" cy="80" rx="20" ry="16" fill="#7a3a10"/>
+  <!-- Flavor water droplet — white so modulate tints it to flavor color -->
+  <ellipse cx="100" cy="55" rx="18" ry="24" fill="#ffffff" opacity="0.92"/>
+  <ellipse cx="95" cy="48" rx="8" ry="10" fill="#ffffff" opacity="0.5"/>
+  <!-- Droplet shine -->
+  <ellipse cx="93" cy="46" rx="4" ry="5" fill="#ffffff" opacity="0.7"/>
   <!-- Surface texture rings -->
   <circle cx="100" cy="96" r="74" fill="none" stroke="#b86308" stroke-width="2.5" opacity="0.4"/>
-  <circle cx="100" cy="96" r="56" fill="none" stroke="#c07010" stroke-width="2" opacity="0.3"/>
 </svg>
