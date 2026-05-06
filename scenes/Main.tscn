@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://main001"]
+
+[ext_resource type="Script" uid="uid://mainscript" path="res://scripts/main_scene.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://customer001" path="res://scenes/Customer.tscn" id="2_customer"]
+[ext_resource type="PackedScene" uid="uid://hud001" path="res://scenes/HUD.tscn" id="3_hud"]
+[ext_resource type="PackedScene" uid="uid://levelcomplete001" path="res://scenes/LevelComplete.tscn" id="4_lc"]
+[ext_resource type="PackedScene" uid="uid://gameover001" path="res://scenes/GameOver.tscn" id="5_go"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.961, 0.38, 0.204, 1)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="CustomerArea" type="Node2D" parent="."]
+position = Vector2(0, 500)
+
+[node name="StallArea" type="Node2D" parent="."]
+position = Vector2(0, 1400)
+
+[node name="AssemblyArea" type="Node2D" parent="."]
+position = Vector2(540, 1350)
+
+[node name="PuriContainer" type="HBoxContainer" parent="AssemblyArea"]
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="Counter" type="PanelContainer" parent="StallArea"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1080.0
+offset_bottom = 480.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StallArea/Counter"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="JugRow" type="HBoxContainer" parent="StallArea/Counter/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+alignment = 1
+size_flags_horizontal = 3
+
+[node name="ActionRow" type="HBoxContainer" parent="StallArea/Counter/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+alignment = 1
+size_flags_horizontal = 3
+
+[node name="PuriTrayBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
+custom_minimum_size = Vector2(200, 160)
+text = "Puri Tray"
+theme_override_font_sizes/font_size = 28
+
+[node name="MasalaBowlBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
+custom_minimum_size = Vector2(200, 160)
+text = "Masala"
+theme_override_font_sizes/font_size = 28
+
+[node name="TrashBtn" type="Button" parent="StallArea/Counter/VBoxContainer/ActionRow"]
+custom_minimum_size = Vector2(200, 160)
+text = "Discard"
+theme_override_font_sizes/font_size = 28
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="PauseBG" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.75)
+
+[node name="PausePanel" type="PanelContainer" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -350.0
+offset_right = 300.0
+offset_bottom = 350.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PausePanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="PauseTitleLabel" type="Label" parent="PauseMenu/PausePanel/VBoxContainer"]
+text = "Paused"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/PausePanel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 90)
+text = "Resume"
+theme_override_font_sizes/font_size = 40
+
+[node name="RestartButton" type="Button" parent="PauseMenu/PausePanel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 90)
+text = "Restart"
+theme_override_font_sizes/font_size = 40
+
+[node name="MenuButton" type="Button" parent="PauseMenu/PausePanel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 90)
+text = "Main Menu"
+theme_override_font_sizes/font_size = 40
+
+[node name="LevelCompleteLayer" type="CanvasLayer" parent="."]
+layer = 20
+visible = false
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+layer = 20
+visible = false
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="LevelTimer" type="Timer" parent="."]
+one_shot = true

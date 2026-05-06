@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pani Puri Rush"
+config/description="A casual time-management game about serving pani puri"
+config/version="1.0.0"
+config/tags=PackedStringArray("mobile", "casual")
+run/main_scene="res://scenes/MainMenu.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(0.961, 0.635, 0.38, 1)
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+AudioManager="*res://scripts/audio_manager.gd"
+FlavorHelper="*res://scripts/flavor.gd"
+LevelLoader="*res://scripts/level_loader.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/handheld/orientation=1
+
+[input]
+
+ui_touch={
+"deadzone": 0.5,
+"events": [Object(InputEventScreenTouch,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(0, 0),"pressure":0.0,"tilt":Vector2(0, 0),"pen_inverted":false,"double_tap":false,"index":0,"canceled":false,"pressed":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.961, 0.635, 0.38, 1)
+textures/vram_compression/import_etc2_astc=true

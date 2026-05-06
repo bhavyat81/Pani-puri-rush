@@ -1,0 +1,5 @@
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+*.cs diff=csharp
+*.tscn diff=godot-tscn
+*.gd diff=gdscript

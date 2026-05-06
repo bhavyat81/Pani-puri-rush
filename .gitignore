@@ -1,0 +1,26 @@
+# Godot 4 specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+*.translation
+.mono/
+.godot/
+data_*/
+mono_crash.*.json
+
+# Android
+android/
+*.apk
+*.aab
+
+# iOS
+*.ipa
+*.xcarchive
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Build output
+build/

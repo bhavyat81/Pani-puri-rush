@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://hud001"]
+
+[ext_resource type="Script" uid="uid://hudscript" path="res://scripts/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="PanelContainer" parent="."]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1080.0
+offset_bottom = 120.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CoinsLabel" type="Label" parent="TopBar/HBoxContainer"]
+text = "Coins: 0"
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="TopBar/HBoxContainer"]
+text = "Score: 0"
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="ComboBadge" type="Label" parent="TopBar/HBoxContainer"]
+text = "x2 COMBO!"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 0.5, 0, 1)
+visible = false
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="TopBar/HBoxContainer"]
+text = "60s"
+theme_override_font_sizes/font_size = 36
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="ReputationLabel" type="Label" parent="TopBar/HBoxContainer"]
+text = "***"
+theme_override_font_sizes/font_size = 36
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 0.0
+offset_top = 125.0
+offset_right = 1080.0
+offset_bottom = 165.0
+text = "Day 1 - First Customers"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)
+
+[node name="PauseButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = -110.0
+offset_top = 130.0
+offset_right = -10.0
+offset_bottom = 180.0
+text = "Pause"
+theme_override_font_sizes/font_size = 26
