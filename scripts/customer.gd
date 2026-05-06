@@ -218,7 +218,7 @@ func _update_mood() -> void:
 		return
 	if state == CustomerState.LEAVING_HAPPY:
 		body_sprite.texture = TEXTURE_HAPPY
-	elif state == CustomerState.LEAVING_ANGRY or patience <= 0.45:
+	elif state == CustomerState.LEAVING_ANGRY or patience <= 0.35:
 		body_sprite.texture = TEXTURE_ANGRY
 	else:
 		body_sprite.texture = TEXTURE_NEUTRAL

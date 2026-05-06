@@ -169,11 +169,12 @@ func _build_jug_buttons() -> void:
 			btn.icon = load(sprite_path)
 			btn.expand_icon = true
 
-		btn.text = FlavorHelper.get_display_name(flavor_idx).left(6)
+		btn.text = FlavorHelper.get_display_name(flavor_idx).left(6)  # Fits the button width
 		btn.add_theme_font_size_override("font_size", 22)
 
 		var flavor_color = _get_flavor_color(flavor_idx)
 		var style = StyleBoxFlat.new()
+		# Use translucent fill so the jug icon is visible through the background
 		style.bg_color = Color(flavor_color.r, flavor_color.g, flavor_color.b, 0.3)
 		style.corner_radius_top_left = 16
 		style.corner_radius_top_right = 16
